@@ -1,0 +1,127 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Chat Container */
+.chat-container {
+    width: 400px;
+    height: 600px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+/* Chat Header */
+.chat-header {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Chat Box */
+.chat-box {
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Scrollbar Styling */
+.chat-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background: #007BFF;
+    border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+}
+
+.chat-box::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Messages */
+.message {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: 70%;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: #e9ecef;
+    color: #333333;
+    border-top-left-radius: 0;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: #007BFF;
+    color: white;
+    border-top-right-radius: 0;
+}
+
+/* Input Area */
+.input-area {
+    display: flex;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-top: 1px solid #e0e0e0;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+}
+
+.input-area input:focus {
+    border-color: #007BFF;
+}
+
+.input-area button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.input-area button:hover {
+    background-color: #0056b3;
+}

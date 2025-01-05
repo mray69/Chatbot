@@ -1,0 +1,43 @@
+version: "3.1"
+intents:
+  - greet
+  - goodbye
+  - bot_challenge
+  - find_trains
+  - provide_from_station
+  - provide_to_station
+
+entities:
+  - from_station
+  - to_station
+
+slots:
+  from_station:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: from_station
+  to_station:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: to_station
+
+responses:
+  utter_greet:
+    - text: "Hello! How can I assist you with train details today?"
+  utter_goodbye:
+    - text: "Goodbye! Have a safe journey."
+  utter_iamabot:
+    - text: "I am a Rasa chatbot."
+  utter_ask_for_from_station:
+    - text: "Which station are you departing from?"
+  utter_ask_for_to_station:
+    - text: "Which station are you traveling to?"
+
+actions:
+  - action_provide_train_details
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

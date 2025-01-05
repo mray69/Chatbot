@@ -1,0 +1,17 @@
+version: "3.1"
+
+stories:
+  - story: find trains
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: find_trains
+      - action: utter_ask_for_from_station
+      - intent: provide_from_station
+        entities:
+          - from_station: "Station Chengannur"
+      - action: utter_ask_for_to_station
+      - intent: provide_to_station
+        entities:
+          - to_station: "Station Kottayam"
+      - action: action_provide_train_details
