@@ -1,3 +1,5 @@
-
 rasa==3.6.2
 rasa-sdk==3.6.2
+setuptools>=65.0.0
+pip>=23.0
+wheel
