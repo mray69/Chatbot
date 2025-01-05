@@ -1,0 +1,36 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - Hello
+      - Hi
+      - Hey
+      - Good morning
+      - Good evening
+
+  - intent: ask_for_train_details
+    examples: |
+      - Can you tell me train details?
+      - I want train information.
+      - Find trains from [Station A](from_station) to [Station B](to_station).
+      - Show me the trains from [Station C](from_station) to [Station D](to_station).
+
+  - intent: provide_from_station
+    examples: |
+      - I am starting from [Station A](from_station).
+      - My departure station is [Station B](from_station).
+
+  - intent: provide_to_station
+    examples: |
+      - I am going to [Station B](to_station).
+      - My destination is [Station C](to_station).
+  - intent: goodbye
+    examples: |
+      -Bye
+      -Good Bye
+  - intent: bot_challenge
+    examples: |
+      -Who are you
+      -are you a bot
+      -bot

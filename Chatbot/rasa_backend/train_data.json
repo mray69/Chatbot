@@ -1,0 +1,39 @@
+{
+    "stations": [
+      {
+        "station_name": "Chengannur",
+        "train_details": [
+          {
+            "train_no": "301",
+            "departure_time": "08:00 AM",
+            "arrival_time": "09:00 AM",
+            "route": "Chengannur to Kottayam"
+          },
+          {
+            "train_no": "302",
+            "departure_time": "10:00 AM",
+            "arrival_time": "11:00 AM",
+            "route": "Chengannur to Kayamkulam Jn"
+          }
+        ]
+      },
+      {
+        "station_name": "Kottayam",
+        "train_details": [
+          {
+            "train_no": "303",
+            "departure_time": "09:00 AM",
+            "arrival_time": "10:00 AM",
+            "route": "Kottayam  to Chengannur"
+          },
+          {
+            "train_no": "304",
+            "departure_time": "11:00 AM",
+            "arrival_time": "12:00 PM",
+            "route": "Station B to Station D"
+          }
+        ]
+      }
+    ]
+  }
+  
