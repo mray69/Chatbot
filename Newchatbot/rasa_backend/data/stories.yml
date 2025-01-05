@@ -1,0 +1,17 @@
+version: "3.1"
+stories:
+- story: greet and find trains
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_trains
+  - action: utter_ask_from_station
+  - intent: provide_station
+    entities:
+      - from_station: "New Delhi"
+  - action: utter_ask_to_station
+  - intent: provide_station
+    entities:
+      - to_station: "Mumbai"
+  - action: action_find_trains
+  - action: utter_goodbye

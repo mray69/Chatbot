@@ -1,0 +1,18 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hello
+    - hi
+    - hey
+
+- intent: find_trains
+  examples: |
+    - I want to find trains
+    - Can you help me find a train?
+
+- intent: provide_station
+  examples: |
+    - from [New Delhi](from_station) to [Mumbai](to_station)
+    - from [Chennai](from_station) to [Bangalore](to_station)
+    - from [station_name](from_station) to [station_name](to_station)
