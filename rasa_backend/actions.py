@@ -16,7 +16,7 @@ class ActionFindTrains(Action):
         to_station = tracker.get_slot("to_station")
 
         # Update the path to the train_data.json file
-        file_path = r'C:\Users\svkur\Desktop\Newchatbot\rasa_backend\actions\train_data.json'
+        file_path = r'C:\Users\svkur\Documents\GitHub\Chatbot\rasa_backend\train_data.json'
 
         try:
             with open(file_path) as f:
@@ -29,6 +29,7 @@ class ActionFindTrains(Action):
 
         if trains:
             response = f"<div class='train-details'><h3>Trains from {from_station} to {to_station}:</h3><ul>"
+   
             for train in trains:
                 response += f"<li><strong>Train:</strong> {train['name']}<br><strong>Arrival:</strong> {train['arrival']}<br><strong>Departure:</strong> {train['departure']}</li>"
             response += "</ul></div>"
