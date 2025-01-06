@@ -1,0 +1,30 @@
+{
+    "New Delhi": {
+        "Mumbai": [
+            {
+                "name": "TVC RAJDHANI (12432)",
+                "arrival": "16:16",
+                "departure": "16:20"
+            },
+            {
+                "name": "CSMT RAJDHANI (22222)",
+                "arrival": "17:15",
+                "departure": "17:17"
+            }
+        ]
+    },
+    "Chennai": {
+        "Bangalore": [
+            {
+                "name": "Shatabdi Express",
+                "departure": "06:00",
+                "arrival": "10:30"
+            },
+            {
+                "name": "Brindavan Express",
+                "departure": "07:40",
+                "arrival": "12:00"
+            }
+        ]
+    }
+}
