@@ -1,4 +1,5 @@
 version: "3.1"
+
 nlu:
 - intent: greet
   examples: |
@@ -11,8 +12,24 @@ nlu:
     - I want to find trains
     - Can you help me find a train?
 
-- intent: provide_station
+- intent: provide_from_station
   examples: |
-    - from [New Delhi](from_station) to [Mumbai](to_station)
-    - from [Chennai](from_station) to [Bangalore](to_station)
-    - from [station_name](from_station) to [station_name](to_station)
+    - from [NDLS](from_station) 
+    - from [MAS](from_station) 
+    - from [XYZ](from_station) 
+    - from [any_station](from_station) 
+- intent: provide_to_station
+  examples: |
+    - to [BCT](to_station)
+    - to [SBC](to_station)
+    - to [ABC](to_station)
+    - to [any_station](to_station)
+
+- regex: from_station
+  examples: |
+    - [A-Z]{2,5} 
+
+- regex: to_station
+  examples: |
+    - [A-Z]{2,5}
+

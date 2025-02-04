@@ -1,7 +1,11 @@
+import requests
+import json
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-import requests
+from datetime import date
+
+current_date = date.today()
 
 class ActionFindTrains(Action):
     def name(self) -> Text:
@@ -13,33 +17,45 @@ class ActionFindTrains(Action):
 
         from_station = tracker.get_slot("from_station")
         to_station = tracker.get_slot("to_station")
+        journey_date = current_date
 
-        # Replace with your Railway API key
-        api_key = "your_api_key_here"
+        if not from_station or not to_station:
+            dispatcher.utter_message(text="Please provide both departure and arrival station codes.")
+            return []
 
-        # URL for the Railway API to fetch train details
-        url = f"http://api.railwayapi.com/v2/arrivals/train/{from_station}/station/{to_station}/apikey/{api_key}/"
-        
+        #dispatcher.utter_message(text=f"Searching for trains from {from_station.upper()} to {to_station.upper()} on {journey_date}...")
+
+        url = "https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations"
+        querystring = {"fromStationCode": from_station.upper(), "toStationCode": to_station.upper(), "dateOfJourney": str(journey_date)}
+        headers = {
+            "x-rapidapi-key": "69e1ae6593mshb586ed58ba9d655p1a60b2jsn2268ab531e5d",
+            "x-rapidapi-host": "irctc1.p.rapidapi.com"
+        }
+
         try:
-            response = requests.get(url)
-            response.raise_for_status()  # Raise an exception for 4xx/5xx errors
+            response = requests.get(url, headers=headers, params=querystring)
             data = response.json()
 
-            if data.get('response_code') == 200 and 'train' in data:
-                trains = data['train']
-                if trains:
-                    response_text = f"<div class='train-details'><h3>Trains from {from_station} to {to_station}:</h3><ul>"
-                    for train in trains:
-                        response_text += f"<li><strong>Train:</strong> {train['train']['name']}<br><strong>Arrival:</strong> {train['train']['arrival_time']}<br><strong>Departure:</strong> {train['train']['departure_time']}</li>"
-                    response_text += "</ul></div>"
-                else:
-                    response_text = f"<div class='train-details'><p>No trains found from {from_station} to {to_station}.</p></div>"
+            if data.get("data"):
+                train_details = f"<div class='train-details'><h3>Trains from {from_station.upper()} to {to_station.upper()} on {journey_date}:</h3><ul>"
+
+                for train in data["data"][:10]:
+                    train_details += (
+                        f"<li><strong>Train:</strong> {train['train_name']} ({train['train_number']})<br>"
+                        f"<strong>Departure:</strong> {train['from_std']}<br>"
+                        f"<strong>Arrival:</strong> {train['from_sta']}</li>"
+                    )
+
+                train_details += "</ul></div>"
+                dispatcher.utter_message(text=train_details)
+
             else:
-                response_text = f"<div class='train-details'><p>Error: No train data available.</p></div>"
+                dispatcher.utter_message(
+                    text=f"<div class='train-details'><p>No trains found from {from_station.upper()} to {to_station.upper()} on {journey_date}.</p></div>"
+                )
 
         except requests.exceptions.RequestException as e:
-            response_text = f"<div class='train-details'><p>Error: Unable to fetch train data. Please try again later.</p></div>"
-            print(f"Error: {e}")
+            dispatcher.utter_message(text="<div class='error-message'><p>Unable to fetch train data. Please try again later.</p></div>")
+            print(f"API Error: {e}")
 
-        dispatcher.utter_message(text=response_text)
         return []

@@ -1,15 +1,16 @@
 version: "3.1"
+
 intents:
   - greet
   - find_trains
-  - provide_station
+  - provide_from_station
+  - provide_to_station
   - goodbye
-  - bot_challenge
+
 
 entities:
   - from_station
   - to_station
-
 slots:
   from_station:
     type: text
@@ -21,20 +22,15 @@ slots:
     mappings:
       - type: from_entity
         entity: to_station
-
 responses:
   utter_greet:
     - text: "Hello! How can I assist you today?"
-
   utter_ask_from_station:
-    - text: "Please provide the departure station."
-
+    - text: "Please provide the departure station code."
   utter_ask_to_station:
-    - text: "Please provide the arrival station."
-
+    - text: "Please provide the arrival station code."
   utter_goodbye:
     - text: "Thank you! Have a great day!"
-
   utter_iamabot:
     - text: "I am a bot, here to help you with train information."
 
